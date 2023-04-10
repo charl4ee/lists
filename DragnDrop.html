@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GROK - Different types of data</title>
+  <style>
+    .drag-box {
+      width: 200px;
+      height: 50px;
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      margin: 10px;
+      text-align: center;
+      line-height: 50px;
+      cursor: move;
+    }
+    #drag-box-1 {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    #drag-box-2 {
+      background-color: #4caf50;
+      color: #fff;
+    }
+    .drop-box {
+      width: 400px;
+      height: 100px;
+      border: 2px dashed #ddd;
+      margin: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Different types of data</h1>
+  <p>Numbers with a decimal place (real numbers) are known as floats.
+  <br>In Python 3, normal division will return a float.</p>
+  <p>What will this output? <strong><span style= "color:purple; ">print</span>(15/3)</strong></p>
+  <div id="allDragBoxes">
+  <div class="drag-box" id="drag-box-1" draggable="true">5</div>
+  <div class="drag-box" id="drag-box-2" draggable="true">5.0</div>	
+  </div>
+  <div class="drop-box" id="dropbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    Drop your answer here
+  </div>
+  <strong><p id = "msg" ></p></strong>
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    function drag(event) {
+      event.dataTransfer.setData("text", event.target.id);
+    }
+    function drop(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("text");
+      event.target.appendChild(document.getElementById(data));
+      if (data === "drag-box-1") {
+        msg.textContent = "Incorrect - normal division will return a float. Try again!";
+		msg.style.color = "red"; 
+		dropbox.removeChild(dropbox.firstElementChild);
+      } else if (data === "drag-box-2") {
+        msg.textContent = "Smart work!";
+		msg.style.color = "green"; 
+		while (allDragBoxes.hasChildNodes()) {
+			allDragBoxes.removeChild(allDragBoxes.firstChild);
+		}
+      }
+    }
+    var boxes = document.querySelectorAll('.drag-box');
+    boxes.forEach(function(box) {
+      box.addEventListener('dragstart', drag);
+    });
+  </script>
+</body>
+</html>
