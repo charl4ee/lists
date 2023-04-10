@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GROK - Changing a float to an integer</title>
+  <style>
+    .drag-box {
+      width: 200px;
+      height: 50px;
+      background-color: #4caf50;
+      color: #fff;
+      border: 1px solid #ddd;
+      margin: 10px;
+      text-align: center;
+      line-height: 50px;
+      cursor: move;
+    }
+    
+    
+    .drop-box {
+      width: 400px;
+      height: 100px;
+      border: 2px dashed #ddd;
+      margin: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+	#msg {
+	  width: 400px;
+	  margin: 20px;      
+      text-align: center;
+	}
+	#question {
+	  border: 1px solid #ddd;
+	}
+	#purple {
+	  color: purple; 
+	}
+  </style>
+</head>
+<body>
+  <h1>Changing a float to an integer</h1>
+  <p>You can change a float to an integer using the <span id="purple">int</span> function:
+  <br>One important thing to note is that if you cast a floating point number to an integer, it will always round down to the integer below.</p>
+  <p>What will this statement output? <strong id="question"><span id="purple">print</span>(<span id="purple">int</span>(2.9))</strong></p>
+  <div id="allDragBoxes">
+  <div class="drag-box" id="drag-box-1" draggable="true">2</div>
+  <div class="drag-box" id="drag-box-2" draggable="true">3</div>	
+  <div class="drag-box" id="drag-box-3" draggable="true">2.9</div>	
+  </div>
+  <div class="drop-box" id="dropbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    Drop your answer here
+  </div>
+  <strong><p id = "msg" ></p></strong>
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    function drag(event) {
+      event.dataTransfer.setData("text", event.target.id);
+    }
+    function drop(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("text");
+      event.target.appendChild(document.getElementById(data));
+      if (data != "drag-box-1") {
+        msg.textContent = "Incorrect. Try again!";
+		msg.style.color = "red";
+		dropbox.style.backgroundColor = "pink";		
+		dropbox.removeChild(dropbox.firstElementChild);
+      } else  {
+        msg.textContent = "Smart work!";
+		msg.style.color = "green"; 
+		dropbox.style.backgroundColor = "green";		
+		while (allDragBoxes.hasChildNodes()) {
+			allDragBoxes.removeChild(allDragBoxes.firstChild);
+		}
+      }
+    }
+    var boxes = document.querySelectorAll('.drag-box');
+    boxes.forEach(function(box) {
+      box.addEventListener('dragstart', drag);
+    });
+  </script>
+</body>
+</html>
