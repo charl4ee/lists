@@ -1,0 +1,104 @@
+/* Quiz container */
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: inline-block;
+
+}
+
+.top {
+	//display: inline-block;
+}
+
+/* Question container */
+.question-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  margin-bottom: 30px;
+  vertical-align: top;
+}
+
+/* Drop container */
+.drop-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  height: 100px;;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  //margin-right: 10px;
+  margin-top: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Question heading */
+.question-container h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Drag boxes */
+.drag-box {
+  display: inline-block;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: move;
+}
+
+/* Drag box on hover */
+.drag-box:hover {
+  background-color: #ddd;
+}
+
+/* Correct answer */
+.correct {
+  background-color: #00ff00;
+}
+
+/* Incorrect answer */
+.incorrect {
+  background-color: #ff0000;
+}
+
+.invisible {
+	display: none;
+}
+
+/* Drop container on hover 
+.drop-container:hover {
+  background-color: #ddd;
+}*/
+
+/* Drop container when item is dragged over */
+.drop-container.drag-over {
+  background-color: #9eff9e;
+}
+
+/* Submit button */
+#submit-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Result message */
+#result-message {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
