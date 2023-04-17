@@ -65,7 +65,7 @@ body{
 
 /* Correct answer */
 .correct {
-  background-color: #00ff00;
+  background-color: lightgreen;
 }
 
 /* Incorrect answer */
@@ -87,23 +87,14 @@ body{
   background-color: #9eff9e;
 }
 
-/* Submit button */
-#submit-btn {
-  display: block;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 
 /* Result message */
-#result-message {
+.results {
   text-align: center;
   font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
+  background-color: lightgreen; 
+  border-radius: 50%;
 }
