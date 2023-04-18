@@ -4,36 +4,48 @@ const longString = "007601110114010101090032010501120115011701090032010001110108
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 if (isMobile) {
-	  // The user agent is a mobile device
-	const draggable = document.getElementById('draggable');
+	// The user agent is a mobile device
+	//const draggablewrong = document.getElementById('draggable');
+	const draggable =  document.querySelectorAll('drag-box');
 	let initialTouchX, initialTouchY;
 	let offsetLeft, offsetTop;
 
-	draggable.addEventListener('touchstart', (event) => {
+	draggable.forEach(dragBox => {
+	  // Add event listeners for when the drag starts and ends
+	  dragBox.addEventListener('touchstart', (event) => {
 	  // Store the initial touch coordinates and the offset of the draggable element
+	  draggable.forEach(dragBox => {
+	  // Add event listeners for when the drag starts and ends
 	  initialTouchX = event.touches[0].clientX;
 	  initialTouchY = event.touches[0].clientY;
 	  offsetLeft = draggable.offsetLeft;
 	  offsetTop = draggable.offsetTop;
+		});
+	  });
 	});
+	  
+	draggable.forEach(dragBox => {
+		dragBox.addEventListener('touchmove', (event) => {
+		  // Calculate the distance between the initial touch coordinates and the current touch coordinates
+		  const touchX = event.touches[0].clientX;
+		  const touchY = event.touches[0].clientY;
+		  const deltaX = touchX - initialTouchX;
+		  const deltaY = touchY - initialTouchY;
 
-	draggable.addEventListener('touchmove', (event) => {
-	  // Calculate the distance between the initial touch coordinates and the current touch coordinates
-	  const touchX = event.touches[0].clientX;
-	  const touchY = event.touches[0].clientY;
-	  const deltaX = touchX - initialTouchX;
-	  const deltaY = touchY - initialTouchY;
-
-	  // Update the position of the draggable element
-	  draggable.style.left = `${offsetLeft + deltaX}px`;
-	  draggable.style.top = `${offsetTop + deltaY}px`;
+		  // Update the position of the draggable element
+		  draggable.style.left = `${offsetLeft + deltaX}px`;
+		  draggable.style.top = `${offsetTop + deltaY}px`;
+		});
 	});
-
-	draggable.addEventListener('touchend', () => {
+	
+	draggable.forEach(dragBox => {
+	dragBox.addEventListener('touchend', () => {
 	  // Signal the end of the drag interaction
 	  initialTouchX = null;
 	  initialTouchY = null;
+	  });
 	});
+	
 } else {
 	  // The user agent is not a mobile device
 
