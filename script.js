@@ -3,7 +3,7 @@ const longString = "007601110114010101090032010501120115011701090032010001110108
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-if (isMobile) {
+if (! isMobile) {
 	// The user agent is a mobile device
 	//const draggablewrong = document.getElementById('draggable');
 	const draggable =  document.querySelectorAll('drag-box');
