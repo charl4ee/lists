@@ -49,6 +49,7 @@ body{
 /* Drag boxes */
 .drag-box {
   display: inline-block;
+  position: relative;
   background-color: #f1f1f1;
   border: 1px solid #ccc;
   padding: 10px 20px;
@@ -56,6 +57,7 @@ body{
   margin-bottom: 10px;
   border-radius: 5px;
   cursor: move;
+
 }
 
 /* Drag box on hover */
@@ -77,24 +79,11 @@ body{
 	display: none;
 }
 
-/* Drop container on hover 
-.drop-container:hover {
-  background-color: #ddd;
-}*/
+
 
 /* Drop container when item is dragged over */
 .drop-container.drag-over {
-  background-color: #9eff9e;
+  background-color: orange;
 }
 
 
-
-/* Result message */
-.results {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 20px;
-  background-color: lightgreen; 
-  border-radius: 50%;
-}
